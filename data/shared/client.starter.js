@@ -77,6 +77,7 @@ window.AppUX.setup = function(){
 	});
 	this.port = self.port;
 	this.baseUrl = self.options.baseUrl;
+	this.folder = self.options.folder;
 	// this.loadJsFile(this.baseUrl + self.options.folder + self.options.mainJsName, function(){
 		// console.log("Js loaded");
 	// });
