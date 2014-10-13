@@ -2,16 +2,16 @@
 // 1.5 -- save the these vars
 // 2 - load main.js
 // give main.js the reference to listen to communications
-if(window.document.AppUX){
+if(window.AppUX){
 	if(self.options.debug){
-		self.port.emit("error", {errCode: "#cwu8d", message: "window.document.AppUX already exists"});
+		self.port.emit("error", {errCode: "#cwu8d", message: "window.AppUX already exists"});
 	}
-	console.error("#cwu8d window.document.AppUX already exists");
+	console.error("#cwu8d window.AppUX already exists");
 }else{
-	window.document.AppUX = {};
+	window.AppUX = {};
 }
-window.document.AppUX.ejs = {};
-window.document.AppUX.loadCss = function(href){
+window.AppUX.ejs = {};
+window.AppUX.loadCss = function(href){
   var fileref=document.createElement("link");
   fileref.setAttribute("rel", "stylesheet");
   fileref.setAttribute("type", "text/css");
@@ -20,7 +20,7 @@ window.document.AppUX.loadCss = function(href){
     document.getElementsByTagName("head")[0].appendChild(fileref);
   }
 };
-window.document.AppUX.loadImage = function(imgId, imgSrc, onloadCallback){
+window.AppUX.loadImage = function(imgId, imgSrc, onloadCallback){
   var loaded = false;
   function loadHandler() {
       if (loaded) {
@@ -42,10 +42,10 @@ window.document.AppUX.loadImage = function(imgId, imgSrc, onloadCallback){
   }
   return img;
 };
-window.document.AppUX.loadEjs = function(ejsUrl, ejsName){
+window.AppUX.loadEjs = function(ejsUrl, ejsName){
   App.ejs[ejsName] = new EJS({url: App.baseUrl + ejsUrl});
 };
-window.document.AppUX.loadJsFile = function(jsurl, onloadCallback){
+window.AppUX.loadJsFile = function(jsurl, onloadCallback){
   var fileref=document.createElement('script');
   fileref.setAttribute("type","text/javascript");
   fileref.setAttribute("src", jsurl);
@@ -57,12 +57,12 @@ window.document.AppUX.loadJsFile = function(jsurl, onloadCallback){
   document.getElementsByTagName("head")[0].appendChild(fileref);
 };
 
-window.document.AppUX.log = function(message){
+window.AppUX.log = function(message){
 	self.port.emit("log", message);
 	return console.log(message);
 };
-window.document.AppUX.info = window.document.AppUX.log;
-window.document.AppUX.error = function(errCode, message){
+window.AppUX.info = window.AppUX.log;
+window.AppUX.error = function(errCode, message){
 	if(!message){
 		message = errCode;
 		errCode = "unspecif";
@@ -71,15 +71,15 @@ window.document.AppUX.error = function(errCode, message){
 	return console.error(errCode, message);
 };
 
-window.document.AppUX.initClientScript = function(){
+window.AppUX.setup = function(){
 	self.port.on("init", function(message) {
-	  alert(message);
+	  console.log("Received init message: " + message);
 	});
-	this.port = self.options.port;
+	this.port = self.port;
 	this.baseUrl = self.options.baseUrl;
-	this.loadJsFile(this.baseUrl + self.options.folder + self.options.mainJsName, function(){
-		console.log("Js loaded");
-	});
+	// this.loadJsFile(this.baseUrl + self.options.folder + self.options.mainJsName, function(){
+		// console.log("Js loaded");
+	// });
 	self.port.removeListener("init");
 	self.port.emit("injected", "client.starter.js");
 	window.addEventListener('error', function (evt) {
@@ -88,4 +88,4 @@ window.document.AppUX.initClientScript = function(){
 	});
 };
 
-window.document.AppUX.initClientScript();
+window.AppUX.setup();
