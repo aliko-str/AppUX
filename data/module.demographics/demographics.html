@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Website Aesthetics Study. Main Window.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div align="center" id="rootEl" class="container centric-wrapper">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<header class="h1"> A short demographics questionnaire.</header>
+				<br />
+				<hr />
+				<p class="bg-info"><big>Note:</big>Your data will be treated confidentially and with the utmost care and respect. No personal data will be disclosed to any third parties.</p>
+			</div>
+		</div>
+				<form id="demographicsForm" role="form" class="form-horizontal" action="#">
+				  <div class="demographicsdiv form-group">
+				    <div align="right" class="col-md-3 col-md-offset-2 control-label">
+				      <p>Gender: </p>
+				    </div>
+				    <div align="left" class="col-md-5 demogroptions">
+				      <div class="radio-inline">
+				        <label><input type="radio" required name="sex" value="male" />Male.</label><br />
+				      </div>
+				      <div class="radio-inline">
+				        <label><input type="radio" required name="sex" value="female" />Female.</label>
+				      </div>
+				    </div>
+				  </div>
+				  
+				  <div class="demographicsdiv form-group">
+				    <div align="right" class="col-md-3 col-md-offset-2 control-label">
+				      <p>Age: </p>
+				    </div>
+				    <div class="col-md-5">
+				      <input class="form-control" type="number" max="99" min="18" name="age" maxlength="2" size="2" required/>
+				    </div>
+				  </div>
+				  
+				  <div class="demographicsdiv form-group">
+				    <div align="right" class="col-md-3 control-label col-md-offset-2">
+				      <p>Vision: </p>
+				    </div>
+				    <div align="left" class="col-md-5 demogroptions">
+				      <div class="radio-inline">
+				        <label><input type="radio" required name="vision" value="normal" />Normal or Corrected to normal.</label><br />
+				      </div>
+				      <div class="radio-inline">
+				        <label><input type="radio" required name="vision" value="impairment" />Vision impairment.</label>
+				      </div>
+				    </div>
+				  </div>
+				  
+				  <div class="demographicsdiv form-group">
+				    <div align="right" class="col-md-3 control-label col-md-offset-2">
+				      <p>Color vision: </p>
+				    </div>
+				    <div align="left" class="col-md-5 demogroptions">
+				      <div class="radio-inline">
+				        <label><input type="radio" required name="colorVision" value="normal" />Normal color vision.</label><br />
+				      </div>
+				      <div class="radio-inline">
+				        <label><input type="radio" required name="colorVision" value="colorblind" />Colorblindness.</label>
+				      </div>
+				    </div>
+				  </div>
+				  
+				  <div class="demographicsdiv form-group">
+				    <div align="right" class="col-md-3 control-label col-md-offset-2">
+				      <p>Ethnic Background: </p>
+				    </div>
+				    <div class="col-md-5">
+				      <select class="form-control" id="ethnicBackground" name="ethnicBackground" required>
+				      </select>
+				    </div>
+				  </div>
+				  
+				  <div class="demographicsdiv form-group">
+				    <div align="right" class="col-md-3 control-label col-md-offset-2">
+				      <p>Educational/occupational background: </p>
+				    </div>
+				    <div class="col-md-5">
+				      <select id="educationalBackground" class="form-control" name="educationalBackground" required>
+				      </select>
+				    </div>
+				  </div>
+				  
+				  <div class="demographicsdiv form-group">
+				    <div align="right" class="col-md-3 control-label col-md-offset-2">
+				      <p>Occupational status: </p>
+				    </div>
+				    <div class="col-md-5">
+				      <select id="occupationalStatus" class="form-control" name="occupationalStatus" required>
+				      	<option value="student">Student</option>
+				      	<option value="doctoralStudent">Doctoral Student</option>
+				      	<option value="postdoc">Postdoc / research fellow</option>
+				      	<option value="employee">Full-time employee</option>
+				      	<option value="partemployee">Part-time employee</option>
+				      	<option value="unemployeed">Unemployed</option>
+				      </select>
+				    </div>
+				  </div>
+				  
+				  <div class="demographicsdiv form-group">
+				    <div align="right" class="col-md-3 control-label questionSpan">
+				      <p>Hours per week spent on the Internet (not including time spent working with email): </p>
+				    </div>
+				    <div align="left" class="col-md-5 demogroptions">
+				        <div class="radio-inline" id="webuse">
+				        </div>
+				    </div>
+				  </div>
+				  
+				  <div class="demographicsdiv form-group">
+				    <div align="right" class="col-md-3 control-label col-md-offset-2">
+				      <p>Experience in visual design or user interface design: </p>
+				    </div>
+				    <div class="col-md-5">
+				      <select id="designExperience" class="form-control" name="designExperience" required>
+				      	<option value="basic">No or very basic</option>
+				      	<option value="significant">Significant to advanced</option>
+				      </select>
+				    </div>
+				  </div>
+				  
+				  <div class="demographicsdiv form-group">
+				    <div align="right" class="col-md-3 col-md-offset-2 control-label">
+				      <p>Near-future plans on doing an internship: </p>
+				    </div>
+				    <div align="left" class="col-md-5 demogroptions">
+				      <div class="radio-inline">
+				        <label><input type="radio" required name="internshipPlans" value="noplans" />I have no near-future plans.</label><br />
+				      </div>
+				      <div class="radio-inline">
+				        <label><input type="radio" required name="internshipPlans" value="yesplans" />I am already thinking about an internship.</label>
+				      </div>
+				    </div>
+				  </div>
+				  
+				  <div class="demographicsdiv form-group">
+				    <div align="right" class="col-md-3 col-md-offset-2 control-label">
+				      <p>Pub/bar visiting: </p>
+				    </div>
+				    <div align="left" class="col-md-5 demogroptions">
+				      <div class="radio-inline">
+				        <label><input type="radio" required name="pubs" value="male" />Less than once a month.</label><br />
+				      </div>
+				      <div class="radio-inline">
+				        <label><input type="radio" required name="pubs" value="female" />Once a month or more often.</label>
+				      </div>
+				    </div>
+				  </div>
+				  
+				  <br />
+				  <hr />
+				  <input id="demogrSubmit" value="Save and Proceed" type="submit" class="btn btn-default btn-info" />
+				  <br />
+				  <hr />
+				</form>
+	</div>
+</body>
+</html>
