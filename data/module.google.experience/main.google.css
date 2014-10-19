@@ -3,6 +3,51 @@
 	height: 100%;
 }*/
 
+.apUX-overlay{
+	position: absolute;
+	z-index: 987;
+	opacity: 0.2;
+	border: 1px solid gray;
+	background: lightgray;
+}
+
+.appUXOverlayOverlay {
+	position: absolute;
+	z-index: 988;
+}
+
+#apUXOverlayTop{
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+
+#apUXOverlayRight{
+	top: 0;
+	right: 0;
+}
+
+#apUXOverlayBottom{
+	width: 100%;
+	left: 0;
+}
+
+div.srg {
+	margin-top: 10px;
+}
+
+.AppUXDraggableDiv{
+	cursor: grab;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+}
+
+.AppUXDraggableDiv:hover{
+	background-color: gray;
+	opacity: 0.3;
+}
 
 .finish-google-experience {
 	-moz-box-shadow:inset 0px 1px 0px 0px #f29c93;

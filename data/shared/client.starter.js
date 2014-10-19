@@ -42,9 +42,6 @@ window.AppUX.loadImage = function(imgId, imgSrc, onloadCallback){
   }
   return img;
 };
-window.AppUX.loadEjs = function(ejsUrl, ejsName){
-  App.ejs[ejsName] = new EJS({url: App.baseUrl + ejsUrl});
-};
 window.AppUX.loadJsFile = function(jsurl, onloadCallback){
   var fileref=document.createElement('script');
   fileref.setAttribute("type","text/javascript");
@@ -78,6 +75,7 @@ window.AppUX.setup = function(){
 	this.port = self.port;
 	this.baseUrl = self.options.baseUrl;
 	this.folder = self.options.folder;
+	this.options = self.options;
 	// this.loadJsFile(this.baseUrl + self.options.folder + self.options.mainJsName, function(){
 		// console.log("Js loaded");
 	// });
@@ -90,3 +88,5 @@ window.AppUX.setup = function(){
 };
 
 window.AppUX.setup();
+
+
