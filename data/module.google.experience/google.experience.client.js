@@ -15,9 +15,6 @@
 		for(var i = 0, ilen = cssToLoad.length; i < ilen; i++) {
 			ap.loadCss(ap.baseUrl + ap.folder + cssToLoad[i]);
 		}
-		window.document.getElementById("finish.google.experience").onclick = function(ev) {
-			ap.port.emit("next", "let's roll!");
-		};
 	}
 
 	function renderGoogleSnippets(ap, snippetRootSlt) {
@@ -110,7 +107,7 @@
 		jqFinBtnContClone.css("top", (jqSnippList.offset().top + jqSnippList.height()).toString() + "px");
 		var jqFinishBtn = $(ap.google.finishBtnTmpl);
 		jqFinishBtn.click(function(ev){
-			onFinishGoogleExperience(ap, jqSnippListCopy);
+			onFinishGoogleExperience(ap, jqSnippListCopy, jqFinishBtn);
 		});
 		jqFinBtnContClone.append(jqFinishBtn);
 		// and make the snippets draggable
@@ -118,12 +115,16 @@
 		return jqRightOverlClone;
 	}
 	
-	function onFinishGoogleExperience(ap, jqSnippRoot){
+	function onFinishGoogleExperience(ap, jqSnippRoot, jqFinishBtn){
 		var _confirm = window.confirm("Press 'Yes' to confirm this is not an accidental click and you've indeed finished. Press 'Cancel' to go back to rearranging.'");
 		var websList;
 		if(_confirm){
 			websList = sendDataListToAddon(ap, "data.rearrWebs", jqSnippRoot);
-			ap.port.emit("next");
+			window.setTimeout(function(){
+				ap.port.emit("next");
+			}, 500);
+			jqFinishBtn.val("Sending data...");
+			jqFinishBtn.prop("disabled", true);
 		}
 		return websList;
 	}
