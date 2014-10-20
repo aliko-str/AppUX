@@ -20,14 +20,17 @@
 		};
 	}
 
-	function renderGoogleSnippets(ap) {
-		var jqRootUl = $("#rso div.srg");
+	function renderGoogleSnippets(ap, snippetRootSlt) {
+		var jqRootUl = $(snippetRootSlt);
 		var snippetHtml = "";
 		ap.google.websites.shuffle();
 		for(var i = 0, ilen = ap.google.websites.length; i < ilen; i++) {
 			snippetHtml += ap.google.tmpl.interpolate(ap.google.websites[i]);
 		}
 		jqRootUl.html(snippetHtml);
+		jqRootUl.find("a").attr("target", "_blank");
+		sendDataListToAddon(ap, "data.initWebs", jqRootUl);
+		return jqRootUl.size();
 	}
 
 	function positionOverlays() {
@@ -83,8 +86,9 @@
 		jqAllLi.parent().first().disableSelection();
 	}
 
-	function duplicateSnippetsOnTheRight() {
-		var jqRightOverl = $("#apUXOverlayRight");
+	function duplicateSnippetsOnTheRight(ap, snippetSlt, rightOverlSlt, finBtnContainerSlt) {
+		var jqRightOverl = $(rightOverlSlt);
+		// duplicate overlay so the content is not transparent
 		var jqRightOverlClone = jqRightOverl.clone();
 		jqRightOverlClone.removeClass("apUX-overlay");
 		jqRightOverlClone.addClass("appUXOverlayOverlay");
@@ -92,22 +96,54 @@
 		jqRightOverlClone.width(jqRightOverl.width());
 		jqRightOverlClone.height(jqRightOverl.height());
 		jqRightOverl.after(jqRightOverlClone);
-		var jqSnippList = $("#res");
+		// copy snippents on the right
+		var jqSnippList = $(snippetSlt);
 		var jqSnippListCopy = jqSnippList.clone();
 		jqRightOverlClone.append(jqSnippListCopy);
 		jqSnippListCopy.css("position", "absolute");
 		jqSnippListCopy.css("top", jqSnippList.offset().top + "px");
 		jqSnippListCopy.css("width", jqSnippList.width() + "px");
+		// create the finish button
+		var jqFinBtnContClone = $(finBtnContainerSlt).clone();
+		jqRightOverlClone.append(jqFinBtnContClone);
+		jqFinBtnContClone.css("position", "absolute");
+		jqFinBtnContClone.css("top", (jqSnippList.offset().top + jqSnippList.height()).toString() + "px");
+		var jqFinishBtn = $(ap.google.finishBtnTmpl);
+		jqFinishBtn.click(function(ev){
+			onFinishGoogleExperience(ap, jqSnippListCopy);
+		});
+		jqFinBtnContClone.append(jqFinishBtn);
+		// and make the snippets draggable
 		makeSnippetsDraggable(jqSnippListCopy);
-		return;
+		return jqRightOverlClone;
+	}
+	
+	function onFinishGoogleExperience(ap, jqSnippRoot){
+		var _confirm = window.confirm("Press 'Yes' to confirm this is not an accidental click and you've indeed finished. Press 'Cancel' to go back to rearranging.'");
+		var websList;
+		if(_confirm){
+			websList = sendDataListToAddon(ap, "data.rearrWebs", jqSnippRoot);
+			ap.port.emit("next");
+		}
+		return websList;
+	}
+	
+	function sendDataListToAddon(ap, evName, jqList){
+		var initList = [];
+		jqList.find("li").each(function(i, el){
+			var jqThis = $(el);
+			initList.push({baseUrl: jqThis.attr("data-id"), index: jqThis.index()});
+		});
+		ap.port.emit(evName, initList);
+		return initList;
 	}
 
 	// run that shit //
 	_defaultInit(ap, imgToLoad, cssToLoad);
-	renderGoogleSnippets(ap);
+	renderGoogleSnippets(ap, "#rso div.srg");
 	window.setTimeout(function() {
 		positionOverlays();
-		duplicateSnippetsOnTheRight();
+		var jqSnippetContainer = duplicateSnippetsOnTheRight(ap, "#res", "#apUXOverlayRight", "#extrares");
 	}, 100);
 	//positionOverlays();
 	// END run that shit //
