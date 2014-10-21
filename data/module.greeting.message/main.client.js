@@ -1,9 +1,7 @@
 (function() {
 	var ap = window.AppUX;
 	var imgToLoad = {
-		"always.open.img" : "module.greeting.message/always.open.png",
-		"drag.drop.examp.img" : "module.greeting.message/stub.drag.drop.png",
-		"next.button.img" : "module.greeting.message/next.button.png"
+		"drag.drop.examp.img" : "module.greeting.message/stub.drag.drop.png"
 	};
 	var cssToLoad = ["side.libs/bootstrap.min.css", "module.greeting.message/main.css"];
 	for(var i = 0, _keys = Object.keys(imgToLoad), ilen = _keys.length; i < ilen; i++){
