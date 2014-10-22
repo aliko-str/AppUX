@@ -105,11 +105,14 @@
 		jqRightOverlClone.append(jqFinBtnContClone);
 		jqFinBtnContClone.css("position", "absolute");
 		jqFinBtnContClone.css("top", (jqSnippList.offset().top + jqSnippList.height()).toString() + "px");
-		var jqFinishBtn = $(ap.google.finishBtnTmpl);
+		jqFinBtnContClone.css("width", jqSnippListCopy.width() + "px");
+		var jqFinishBtn = jqFinBtnContClone.find("input[type='button']");//$(ap.google.finishBtnTmpl);
+		jqFinishBtn.css("visibility", "visible");
+		jqFinishBtn.before("<br/>");
 		jqFinishBtn.click(function(ev){
 			onFinishGoogleExperience(ap, jqSnippListCopy, jqFinishBtn);
 		});
-		jqFinBtnContClone.append(jqFinishBtn);
+		//jqFinBtnContClone.append(jqFinishBtn);
 		// and make the snippets draggable
 		makeSnippetsDraggable(jqSnippListCopy);
 		return jqRightOverlClone;
