@@ -1,6 +1,7 @@
 html, body {
 	height: 100%;
 	width: 100%;
+	font-size: 120%;
 }
 
 .vertical-center {
@@ -32,8 +33,37 @@ html, body {
 }
 
 .rateeContainer {
-	margin: 10px;
+	padding: 10px;
 	background: url(
 	data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAD0lEQVQImWNgQAX/yeAAAIHCA/0RE2WAAAAAAElFTkSuQmCC
 	) repeat;
+}
+
+#apUXWebsMinLabel {
+}
+
+#apUXWebsMaxLabel {
+	margin-left: 20px;
+}
+
+.apUXRadio {
+	margin-left: 3px !important;
+	margin-right: 3px !important;
+}
+
+.apUXRadio p{
+	margin: 0;
+}
+
+.apUXRadio input {
+	margin: 0 !important;
+	float:none;
+}
+
+.apUXRadio input:hover{
+	cursor: pointer;
+}
+
+#apUXWebsPreviewRoot {
+	background-color: white;
 }
