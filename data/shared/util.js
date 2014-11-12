@@ -102,6 +102,19 @@ if(!Object.keys) {
 	};
 }
 
+function submitWithDelay(rootEl, callback){
+	var jqThisSubmit = $(rootEl).find("input[type='submit']");
+	window.setTimeout((function(submText) {
+		return function() {
+			jqThisSubmit.val(submText);
+			callback();
+			return;
+		};
+	})(jqThisSubmit.val()), 500);
+	jqThisSubmit.val("Saving it...");
+	return;
+}
+
 function disableSubmitForNSec(jqSubmit, sec, btnText, clickCallback, unfreezeCallback) {
 		var delaySec = sec || 5;
 		var strVal = btnText || "Unfreezes in ";
