@@ -67,15 +67,15 @@
 			cursor : "grabbing",
 			appendTo : jqRoot,
 			opacity : 0.5,
-			axis: "y",
+			axis : "y",
 			change : function(ev, ui) {
-				jqRoot.find("li").not(ui.item.add(ui.helper)).each(function(i){
+				jqRoot.find("li").not(ui.item.add(ui.helper)).each(function(i) {
 					$(this).css("top", liTopCoordStore[i] + "px");
 				});
 			},
-			stop: function(ev, ui){
-				jqRoot.find("li").not(ui.helper).each(function(i, el){
-					var jqThis = $(el); 
+			stop : function(ev, ui) {
+				jqRoot.find("li").not(ui.helper).each(function(i, el) {
+					var jqThis = $(el);
 					jqThis.css("top", liTopCoordStore[jqThis.index()] + "px");
 				});
 			}
@@ -100,30 +100,33 @@
 		jqSnippListCopy.css("position", "absolute");
 		jqSnippListCopy.css("top", jqSnippList.offset().top + "px");
 		jqSnippListCopy.css("width", jqSnippList.width() + "px");
-		// create the finish button
+		// create the finish button -- container configuration
 		var jqFinBtnContClone = $(finBtnContainerSlt).clone();
 		jqRightOverlClone.append(jqFinBtnContClone);
 		jqFinBtnContClone.css("position", "absolute");
 		jqFinBtnContClone.css("top", (jqSnippList.offset().top + jqSnippList.height()).toString() + "px");
 		jqFinBtnContClone.css("width", jqSnippListCopy.width() + "px");
-		var jqFinishBtn = jqFinBtnContClone.find("input[type='button']");//$(ap.google.finishBtnTmpl);
+		// configure the finish button
+		var jqFinishBtn = jqFinBtnContClone.find("input[type='button']");
 		jqFinishBtn.css("visibility", "visible");
 		jqFinishBtn.before("<br/>");
-		jqFinishBtn.click(function(ev){
+		//jqFinishBtn.click();
+		disableSubmitForNSec(jqFinishBtn, ap.options.minTimeToBrowse, "You can send the answers in", function(ev) {
 			onFinishGoogleExperience(ap, jqSnippListCopy, jqFinishBtn);
+		}, function() {
+			// no-op
 		});
-		//jqFinBtnContClone.append(jqFinishBtn);
 		// and make the snippets draggable
 		makeSnippetsDraggable(jqSnippListCopy);
 		return jqRightOverlClone;
 	}
-	
-	function onFinishGoogleExperience(ap, jqSnippRoot, jqFinishBtn){
+
+	function onFinishGoogleExperience(ap, jqSnippRoot, jqFinishBtn) {
 		var _confirm = window.confirm("Press 'Yes' to confirm this is not an accidental click and you've indeed finished. Press 'Cancel' to go back to rearranging.'");
 		var websList;
-		if(_confirm){
+		if(_confirm) {
 			websList = sendDataListToAddon(ap, "data.rearrWebs", jqSnippRoot);
-			window.setTimeout(function(){
+			window.setTimeout(function() {
 				ap.port.emit("next");
 			}, 500);
 			jqFinishBtn.val("Sending data...");
@@ -131,12 +134,15 @@
 		}
 		return websList;
 	}
-	
-	function sendDataListToAddon(ap, evName, jqList){
+
+	function sendDataListToAddon(ap, evName, jqList) {
 		var initList = [];
-		jqList.find("li").each(function(i, el){
+		jqList.find("li").each(function(i, el) {
 			var jqThis = $(el);
-			initList.push({baseUrl: jqThis.attr("data-id"), index: jqThis.index()});
+			initList.push({
+				baseUrl : jqThis.attr("data-id"),
+				index : jqThis.index()
+			});
 		});
 		ap.port.emit(evName, initList);
 		return initList;

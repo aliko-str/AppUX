@@ -1,0 +1,31 @@
+html, body {
+	height: 100%;
+}
+
+.vertical-center {
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+
+.apUXRadio {
+	margin-left: 3px !important;
+	margin-right: 3px !important;
+}
+
+.apUXRadio p{
+	margin: 0;
+}
+
+.apUXRadio input {
+	margin: 0 !important;
+	float:none;
+}
+
+.apUXRadio input:hover{
+	cursor: pointer;
+}
+
+#websRatingForm {
+	display: none;
+}
