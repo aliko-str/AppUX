@@ -29,12 +29,23 @@
 	}
 
 	(function setUpVisuals(screenList) {
-		var timestampFrom;
-		var timestampTo;
-		var dataArr = [];
+		var timestampFrom, timeIntervalsTop, timeIntervalsAfterScroll, dataArr, isTop;
+		isTop = true;
+		dataArr = [];
+		timeIntervalsTop = [];
+		timeIntervalsAfterScroll = [];
 		$("#apUXWebsQuestion").text(ap.options.question);
 		$("#apUXWebsMinLabel").text(ap.options.apUXWebsMinLabel);
 		$("#apUXWebsMaxLabel").text(ap.options.apUXWebsMaxLabel);
+		window.addEventListener("is.top.changed", function(ev){
+			if(isTop){
+				timeIntervalsTop.push(Date.now() - timestampFrom);
+			}else{
+				timeIntervalsAfterScroll.push(Date.now()- timestampFrom);
+			}
+			timestampFrom = Date.now();
+			isTop = ev.detail.isTop;
+		});
 		setScreenshotToRate(ap, screenList.shift(), function() {
 			timestampFrom = Date.now();
 		});
@@ -43,13 +54,21 @@
 			jqForm.find("input[type='button']").val("Saving it...").prop("disabled", true);
 			var data = {
 				fname : jqForm.find("input[name='fname']").val(),
-				time : timestampTo - timestampFrom,
+				timeTop : timeIntervalsTop.reduce(function(a,b){
+					return a + b;
+				}),
+				timeBelowTop : timeIntervalsAfterScroll.reduce(function(a, b){
+					return a + b;
+				}),
 				score : jqForm.find("input[name='apUXWebsRating']:checked").val()
 			};
 			dataArr.push(data);
 			window.setTimeout(function() {
 				if(screenList.length) {
 					setScreenshotToRate(ap, screenList.shift(), function() {
+						isTop = true;
+						timeIntervalsTop = [];
+						timeIntervalsAfterScroll = [];
 						timestampFrom = Date.now();
 					});
 				} else {
@@ -59,9 +78,9 @@
 			}, 500);
 			ev.preventDefault();
 		});
-		$("input[type='radio']").click(function(ev) {
-			timestampTo = Date.now();
-		});
+		// $("input[type='radio']").click(function(ev) {
+			// timestampTo = Date.now();
+		// });
 	})(screenshotsToRate.shuffle());
 
 	function saveScreenshotRatingsTimeToRate(dataArr) {
@@ -132,3 +151,37 @@
 		return;
 	};
 })();
+
+(function() {
+	"use strict";
+	function isTopScreen(windowSize, scrollPosition) {
+		return (scrollPosition < windowSize / 2);
+	}
+
+	var _isTopThen = isTopScreen(window.innerHeight, window.pageYOffset);
+	var _isTopNow = _isTopThen;
+	var timer;
+	window.addEventListener("scroll", function(ev) {
+		if(timer) {
+			// clear the timer, if one is pending
+			clearTimeout(timer);
+			timer = null;
+		}
+		timer = setTimeout(onScrollHandler, 100);
+	});
+
+	function onScrollHandler() {
+		_isTopNow = isTopScreen(window.innerHeight, window.pageYOffset);
+		if(_isTopNow != _isTopThen) {
+			var event = new CustomEvent('is.top.changed', {
+				detail : {
+					isTop : isTopScreen(window.innerHeight, window.pageYOffset)
+				}
+			});
+			window.dispatchEvent(event);
+		}
+		_isTopThen = _isTopNow;
+	}
+
+})();
+

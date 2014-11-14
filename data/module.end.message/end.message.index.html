@@ -26,8 +26,23 @@
 							</address>
 						</p>
 						<hr/>
+						<p class="loader-box">
+							<p class="saving-now">
+								<img id="loaderImg" width="32px" height="32px" />
+								Please wait, we are saving data...
+							</p>
+							<p class="saving-success bg-success">
+								The data have been successfully saved.
+								<hr />
+								<input value="Close the window" id="finishReading" class="btn btn-success btn-lg" type="button" />
+							</p>
+							<p class="saving-error bg-danger">
+								An error occurred while saving the data: <span id="errorText"></span>
+								<hr />
+								<input value="Try saving again" id="tryAgainButton" class="btn btn-lg btn-danger" type="button" />
+							</p>
+						</p>
 					</div>
-					<input value="Close the window" id="finishReading" class="btn btn-primary btn-lg" type="button" />
 					<br/>
 				</div>
 			</div>

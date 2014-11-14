@@ -7,3 +7,20 @@ html, body {
 	align-items: center;
 	height: 100%;
 }
+
+
+#finishReading {
+	visibility: hidden;
+}
+
+.saving-success {
+	display: none;
+	border: #009933 1px solid;
+	border-radius: 5px;
+}
+
+.saving-error{
+	display: none;
+	border: red 1px solid;
+	border-radius: 5px; 
+}
