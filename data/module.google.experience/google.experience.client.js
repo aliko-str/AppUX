@@ -111,7 +111,7 @@
 		jqFinishBtn.css("visibility", "visible");
 		jqFinishBtn.before("<br/>");
 		//jqFinishBtn.click();
-		disableSubmitForNSec(jqFinishBtn, ap.options.minTimeToBrowse, "You can send the answers in", function(ev) {
+		disableSubmitForNSec(jqFinishBtn, ap.options.minTimeToBrowse, "Time till you can submit:  ", function(ev) {
 			onFinishGoogleExperience(ap, jqSnippListCopy, jqFinishBtn);
 		}, function() {
 			// no-op

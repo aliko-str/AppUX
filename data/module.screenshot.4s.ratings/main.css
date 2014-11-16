@@ -91,3 +91,7 @@ input[type='submit'] {
 #apUXWebsPreviewRoot {
 	background-color: white;
 }
+
+.border-right {
+	border-right: lightgray 1px solid;
+}

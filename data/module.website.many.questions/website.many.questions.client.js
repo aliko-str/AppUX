@@ -57,6 +57,13 @@
 		var jqRatingForm = $("#websRatingForm");
 		var websIndex = resetWebsite(websList, -1);
 		jqAnswForm.find("#taskDescr").text(ap.options.task.text);
+		jqAnswForm.find("input[name='cantAnswer']").click(function(ev){
+			if(this.checked){
+				jqAnswForm.find("input[name='taskAnswer']").prop("disabled", true);
+			}else{
+				jqAnswForm.find("input[name='taskAnswer']").prop("disabled", false);
+			}
+		});
 		jqAnswForm.submit(function(ev) {
 			ev.preventDefault();
 			var hostname = $(this).find("input[name='hostname']").val();
@@ -65,7 +72,8 @@
 			});
 			ap.port.emit("data.task.answer", {
 				webRoot : hostname,
-				answer : $(this).find("input[name='taskAnswer']").val()
+				answer : $(this).find("input[name='taskAnswer']").val(),
+				cantAnswer : $(this).find("input[name='cantAnswer']").is(":checked")
 			});
 			var jqThisSubmit = $(this).find("input[type='submit']");
 			window.setTimeout((function(submText) {

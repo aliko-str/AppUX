@@ -28,7 +28,7 @@ String.getNumberEndings = function(num) {
 };
 
 // Array.prototype.copy = function() {
-	// return this.slice(0);
+// return this.slice(0);
 // };
 
 Array.prototype.shuffle = function() {
@@ -58,7 +58,8 @@ Array.objToArray = function(obj) {
 };
 
 if('function' !== typeof Array.prototype.reduce) {
-	Array.prototype.reduce = function(callback, opt_initialValue) {'use strict';
+	Array.prototype.reduce = function(callback, opt_initialValue) {
+		'use strict';
 		if(null === this || 'undefined' === typeof this) {
 			// At the moment all modern browsers, that support strict mode, have
 			// native implementation of Array.prototype.reduce. For instance, IE8
@@ -102,7 +103,7 @@ if(!Object.keys) {
 	};
 }
 
-function submitWithDelay(rootEl, callback){
+function submitWithDelay(rootEl, callback) {
 	var jqThisSubmit = $(rootEl).find("input[type='submit']");
 	window.setTimeout((function(submText) {
 		return function() {
@@ -116,41 +117,54 @@ function submitWithDelay(rootEl, callback){
 }
 
 function disableSubmitForNSec(jqSubmit, sec, btnText, clickCallback, unfreezeCallback) {
-		var delaySec = sec || 5;
-		var strVal = btnText || "Unfreezes in ";
-		var oldStrVal = jqSubmit.val();
-		jqSubmit.attr("title", "You can't submit answers before the button unfreezes. This is a part of our anti-bot policy.");
-		jqSubmit.attr("style", "box-shadow: none;cursor: not-allowed;opacity: 0.5;");
-		jqSubmit.tooltip();
-		jqSubmit.hover(function(ev) {
-			ev.preventDefault();
-		}, function(ev) {
-			ev.preventDefault();
-		});
-		jqSubmit.click(function(ev) {
-			ev.preventDefault();
-		});
-		function tick(secondLeft) {
-			if(secondLeft) {
-				jqSubmit.val(strVal + secondLeft.toString());
-				window.setTimeout(function() {
-					tick(secondLeft - 1);
-				}, 1000);
-			} else {
-				jqSubmit.val(oldStrVal);
-				jqSubmit.removeAttr("style");
-				jqSubmit.off("click");
-				jqSubmit.off("hover");
-				if(clickCallback) {
-					jqSubmit.click(clickCallback);
-				}
-				jqSubmit.removeAttr("title");
-				jqSubmit.removeAttr("data-original-title");
-				jqSubmit.tooltip({
-					disabled : true
-				});
-				unfreezeCallback();
-			}
+	var delaySec = sec || 5;
+	var secondsToString = (function(delaySec) {
+		if(delaySec > 60) {
+			return function(sec) {
+				var min = Math.floor(sec / 60);
+				var _sec = sec % 60;
+				return min + ":" + _sec + " min";
+			};
+		}
+		return function(sec) {
+			return sec + " sec";
 		};
-		tick(delaySec);
+	})(delaySec);
+	var strVal = btnText || "Unfreezes in ";
+	var oldStrVal = jqSubmit.val();
+	//jqSubmit.attr("title", "You can't submit answers before the button unfreezes.
+	// This is a part of our anti-bot policy.");
+	jqSubmit.attr("style", "box-shadow: none;cursor: not-allowed;opacity: 0.5;");
+	jqSubmit.tooltip();
+	jqSubmit.hover(function(ev) {
+		ev.preventDefault();
+	}, function(ev) {
+		ev.preventDefault();
+	});
+	jqSubmit.click(function(ev) {
+		ev.preventDefault();
+	});
+	function tick(secondLeft) {
+		if(secondLeft) {
+			jqSubmit.val(strVal + secondsToString(secondLeft));
+			window.setTimeout(function() {
+				tick(secondLeft - 1);
+			}, 1000);
+		} else {
+			jqSubmit.val(oldStrVal);
+			jqSubmit.removeAttr("style");
+			jqSubmit.off("click");
+			jqSubmit.off("hover");
+			if(clickCallback) {
+				jqSubmit.click(clickCallback);
+			}
+			jqSubmit.removeAttr("title");
+			jqSubmit.removeAttr("data-original-title");
+			jqSubmit.tooltip({
+				disabled : true
+			});
+			unfreezeCallback();
+		}
 	};
+	tick(delaySec);
+};

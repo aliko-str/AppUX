@@ -4,8 +4,16 @@ window.onbeforeunload = function(e) {
 	return mess;
 };
 
+function onUnloadListener(ev){
+	self.port.emit("test.flow.interrupted");
+	return;
+}
+
+window.addEventListener("unload", onUnloadListener);
+
 self.port.on("done", function() {
 	window.onbeforeunload = null;
+	window.removeEventListener("unload", onUnloadListener);
 });
 
 self.port.emit("injected", "on.close.warning.js");
