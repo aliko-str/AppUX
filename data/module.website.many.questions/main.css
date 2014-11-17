@@ -8,13 +8,22 @@ html, body {
 	height: 100%;
 }
 
+.full-width{
+	width: 100%;
+}
+
 .apUXRadio {
 	margin-left: 3px !important;
 	margin-right: 3px !important;
+	text-align: center !important;
 }
 
 .apUXRadio p{
 	margin: 0;
+}
+
+.apUXRadio label {
+	padding-left: 10px !important;
 }
 
 .apUXRadio input {
@@ -26,6 +35,19 @@ html, body {
 	cursor: pointer;
 }
 
+.semanticLabel {
+	padding-top: 10px;
+}
+
+.semanticItem div {
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
 #websRatingForm {
 	display: none;
+}
+
+.wholeRatingArea {
+	min-height: 70px;
 }

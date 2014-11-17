@@ -10,37 +10,32 @@
 		<br />
 
 		<div align="center" id="rootEl" class="container vertical-center">
-			<div class="row">
+			<div class="row full-width">
 				<div class="col-md-8 col-md-offset-2">
 					<div align="left">
-						<form action="#" role="form" class="form-horizontal" id="websAnswForm">
+						<form action="#" role="form" class="form" id="websAnswForm">
 							<input type="hidden" name="hostname" value="_default" />
-							<h3> The Task</h3>
+							<h1> Website <span id="websNum">_default</span> out of <span id="websNumAll">_default</span></h1>
 							<p>
-								<big id="taskDescr">
-										Task description goes here.
-								</big>
+								<big id="taskDescr"> Task description goes here. </big>
 							</p>
-							<hr/>	
-							<h3> Website <span id="websNum">_default</span></h3>
-							<br />
+							<hr/>
 							<p>
-								<a target="_blank" id="websUrl"></a>
+								<big> <a target="_blank" id="websUrl"></a> </big>
 							</p>
 							<div class="form-group">
-								<label>
-									<span>
-										Your answer:
-									</span>
-									<input type="text" name="taskAnswer" value="" required/>
-								</label>
-								<label>
-									<span>
-										I don't have or can't find an answer.
-									</span>
-									<input type="checkbox" name="cantAnswer" value="false" />
-								</label>
-								<br />
+								<p>
+									<big> Your answer: </big>
+								</p>
+								<input class="form-control" type="text" name="taskAnswer" value="" required/>
+								<div class="checkbox-inline">
+									<label>
+										<input type="checkbox" name="cantAnswer" value="false" />
+										I don't have or can't find an answer. </label>
+								</div>
+							</div>
+							<hr />
+							<div align="center">
 								<input type="submit" value="Send answer" class="btn btn-primary btn-lg" />
 							</div>
 						</form>
@@ -49,15 +44,17 @@
 							<h3>Your impressions:</h3>
 							<hr />
 							<div class="row wholeRatingArea">
-								<div class="col-md-5">
+								<div class="col-md-4">
 									<p class="questionBox">
 										_default question text
 									</p>
 								</div>
-								<div class="col-md-7">
+								<div class="col-md-8 semanticItem">
 									<div class="controls-row">
-										<span>&larr;</span>
-										<span class="apUXWebsMinLabel"></span>
+										<div align="right" class="col-md-2 semanticLabel">
+											<span class="apUXWebsMinLabel"></span>	
+										</div>
+										<div class="col-md-8">
 										<label class="radio-inline control-label apUXRadio">
 											<p>
 												<b>1</b>
@@ -100,23 +97,22 @@
 											</p>
 											<input type="radio" name="_defaultRatingName" value="7" required/>
 										</label>
-										<span class="apUXWebsMaxLabel"></span>
-										<span>&rarr;</span>
+										</div>
+										<div align="left" class="col-md-2 semanticLabel">
+											<span class="apUXWebsMaxLabel"></span>
+										</div>
 									</div>
 								</div>
 							</div>
 							<hr />
-							<input type="submit" value="Send answers" class="btn btn-primary btn-lg"/>
+							<div align="center">
+								<input type="submit" value="Send answers" class="btn btn-primary btn-lg"/>
+							</div>
 						</form>
-						<br />
 					</div>
-					<br/>
+					<br />
 				</div>
 			</div>
-		</div>
-		<div id="overlayContainer" class="" align="center">
-			<div class="loaderOverlay"></div>
-			<div align="center" id="loaderOverlay"></div>
 		</div>
 	</body>
 </html>

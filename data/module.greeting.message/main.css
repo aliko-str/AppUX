@@ -1,8 +1,9 @@
 html, body {
 	width:100%;
 	height:100%;
+	font-size: 100% !important;
 }
 
 #rootEl p, li{
-	font-size: 16px;
+	/*font-size: 16px;*/
 }

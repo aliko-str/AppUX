@@ -36,23 +36,23 @@
 		var jqQuestionRow = jqRatingForm.find(".wholeRatingArea");
 		var jqAllQuestionsArr = [jqQuestionRow];
 		// duplicate ratingAreas for each question
-		for(var i = questionList.legnth - 1; i--; ) {
+		for(var i = questionList.length - 1; i--; ) {
 			var _clone = jqQuestionRow.clone();
-			jqRatingForm.append(_clone);
+			jqQuestionRow.after(_clone);
 			jqAllQuestionsArr.push(_clone);
 		}
 		// insert texts/content into each ratingArea
 		for(var i = 0, ilen = questionList.length; i < ilen; i++) {
 			var jqRow = jqAllQuestionsArr[i];
 			jqRow.find(".questionBox").text(questionList[i].question);
-			jqRow.find("radio").attr("name", questionList[i].id);
+			jqRow.find("input[type='radio']").attr("name", questionList[i].id);
 			jqRow.find(".apUXWebsMinLabel").text(questionList[i].apUXWebsMinLabel);
 			jqRow.find(".apUXWebsMaxLabel").text(questionList[i].apUXWebsMaxLabel);
 		}
 	})(questionList);
 
-	// TODO redo from below
 	(function main(websList) {
+		debugger;
 		var jqAnswForm = $("#websAnswForm");
 		var jqRatingForm = $("#websRatingForm");
 		var websIndex = resetWebsite(websList, -1);
@@ -103,7 +103,7 @@
 			jqThisSubmit.val("Saving it...");
 		});
 		return;
-	})(websList);
+	})(websitesToRate.shuffle());
 
 	function showRatingForm() {
 		$("#websRatingForm").show();
@@ -112,21 +112,28 @@
 	}
 
 	function resetWebsite(websList, oldIndex) {
-		var i = oldIndex++;
+		debugger;
+		var i = oldIndex + 1;
 		var website = websList[i];
 		if(!website) {
 			return ap.port.emit("next", "let's roll!");
 		}
-		$("input[name='hostname']").value(website.hostname);
-		$("#websRatingForm").hide();
-		$("#websAnswForm").show();
+		$("input[name='hostname']").val(website.hostname);
+		//$("#subtleMessageBox").hide();
+		$("#websRatingForm").hide().trigger('reset');
+		$("#websAnswForm").show().trigger('reset').find("input").prop("disabled", false);
 		$("#websNum").text(i + 1);
-		$("#websUrl").attr("href", website.url);
+		$("#websNumAll").text(websList.length);
+		$("#websUrl").attr("href", website.url).text(website.url);
 		$("#websUrl").one("click", function(ev) {
 			ap.port.emit("startTask", {
 				hostname : website.hostname
 			});
 		});
+		// if(i){
+			// // all but first
+			// $("#subtleMessageBox").slideDown(600).find("#pastWebsName").text(websList[i-1].hostname);
+		// }
 		return i;
 	}
 })();

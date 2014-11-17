@@ -9,7 +9,7 @@
 	});
 	_evClick[checkFieldName] = true;
 	function listenToAllClicks() {
-		console.log("Assigned click listener");
+		//console.log("Assigned click listener");
 		document.addEventListener("click", function(ev) {
 			if( checkFieldName in ev) {
 				// just checking - no need to do anything
