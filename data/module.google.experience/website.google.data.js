@@ -1,7 +1,7 @@
 (function(){
 	var ap = window.AppUX;
 	ap.google = {};
-	ap.google.tmpl = '	<li data-id="<%baseUrl%>" class="g">\
+	ap.google.tmpl = '	<li data-id="<%webRoot%>" class="g">\
 		<div class="rc" data-hveid="32">\
 			<h3 class="r"><a href="<%href%>" ><%title%> <b>...</b></a></h3>\
 			<div class="s">\

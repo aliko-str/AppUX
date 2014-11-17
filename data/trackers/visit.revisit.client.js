@@ -2,7 +2,7 @@
 	var _getHostName = (function(elA) {
 		return function(href) {
 			elA.href = href;
-			return elA.hostName;
+			return elA.hostname;
 		};
 	})(document.createElement("a"));
 	// detect internal links and ignore them in onHashChange
