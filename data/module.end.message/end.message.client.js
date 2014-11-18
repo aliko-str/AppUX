@@ -19,16 +19,16 @@
 	
 	$("#tryAgainButton").click(function(ev){
 		ap.port.emit("try.again");
-		$(".loader-box > *").hide();
-		$(".saving-now").show();
+		$(".loader-box > *").slideUp(500);
+		$(".saving-now").slideDown(500);
 	});
 	ap.port.on("save.error", function(err){
 		$("#errorText").text(err);
-		$(".loader-box > *").hide();
-		$(".saving-error").show();
+		$(".loader-box > *").slideUp(500);
+		$(".saving-error").slideDown(500);
 	});
 	ap.port.on("save.success", function(msg){
-		$(".loader-box > *").hide();
-		$(".saving-error").show();
+		$(".loader-box > *").slideUp(500);
+		$(".saving-success").slideDown(500);
 	});
 })();

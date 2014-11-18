@@ -14,33 +14,44 @@
 				<div class="col-md-8 col-md-offset-2">
 					<div align="left">
 						<h2> Thank you for your participation!</h2>
-						<hr />
 						<p class="h4">
 							We're going to analyze the data hard and hope to learn from it a lot.
 						</p>
 						<hr/>
-						<p class="h4">
+						<div class="h4">
 							For more info feel free to contact us on
-							<address>
+							<address style="display:inline;">
 								<a href="mailto:miniukovich@disi.unitn.it">miniukovich@disi.unitn.it</a>
 							</address>
-						</p>
+						</div>
 						<hr/>
 						<div class="loader-box">
-							<p class="saving-now">
+							<div class="saving-now">
 								<img id="loaderImg" width="32px" height="32px" />
-								Please wait, we are saving data...
-							</p>
-							<p class="saving-success bg-success">
-								The data have been successfully saved.
-								<hr />
-								<input value="Close the window" id="finishReading" class="btn btn-success btn-lg" type="button" />
-							</p>
-							<p class="saving-error bg-danger">
-								An error occurred while saving the data: <span id="errorText"></span>
-								<hr />
-								<input value="Try saving again" id="tryAgainButton" class="btn btn-lg btn-danger" type="button" />
-							</p>
+								<span>Please wait, we are saving data...
+							</div>
+							<div class="row saving-success bg-success">
+								<div class="col-md-12">
+									<div class="h4 vertical-center">
+										<input value="Close the window" id="finishReading" class="btn btn-success btn-lg" type="button" />
+										&nbsp;
+										<span class="h4">
+											The data have been successfully saved.
+										</span>										
+									</div>
+								</div>
+							</div>
+							<div class="row saving-error bg-danger">
+								<div class="col-md-12">
+									<div class="h4 vertical-center">
+										<input value="Try saving again" id="tryAgainButton" class="btn btn-lg btn-danger" type="button" />
+										&nbsp;
+										<span>
+											An error occurred while saving the data. Try to re-save it in a moment.
+										</span>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<br/>

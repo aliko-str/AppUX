@@ -140,7 +140,7 @@
 		jqList.find("li").each(function(i, el) {
 			var jqThis = $(el);
 			initList.push({
-				baseUrl : jqThis.attr("data-id"),
+				webRoot : jqThis.attr("data-id"),
 				index : jqThis.index()
 			});
 		});

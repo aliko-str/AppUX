@@ -52,7 +52,6 @@
 	})(questionList);
 
 	(function main(websList) {
-		debugger;
 		var jqAnswForm = $("#websAnswForm");
 		var jqRatingForm = $("#websRatingForm");
 		var websIndex = resetWebsite(websList, -1);
@@ -112,7 +111,6 @@
 	}
 
 	function resetWebsite(websList, oldIndex) {
-		debugger;
 		var i = oldIndex + 1;
 		var website = websList[i];
 		if(!website) {

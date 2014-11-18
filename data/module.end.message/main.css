@@ -8,9 +8,9 @@ html, body {
 	height: 100%;
 }
 
-
-#finishReading {
-	visibility: hidden;
+#loaderImg {
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 .saving-success {
