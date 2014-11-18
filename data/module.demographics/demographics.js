@@ -51,5 +51,7 @@ function _tmpAutoFieldFiller(){
 		return false;
 	});
 	// TODO remove after testing
-	_tmpAutoFieldFiller();
+	if(ap.options.debug){
+		_tmpAutoFieldFiller();
+	}
 })();

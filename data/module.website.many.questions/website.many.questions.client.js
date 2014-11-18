@@ -117,21 +117,20 @@
 			return ap.port.emit("next", "let's roll!");
 		}
 		$("input[name='hostname']").val(website.hostname);
-		//$("#subtleMessageBox").hide();
 		$("#websRatingForm").hide().trigger('reset');
 		$("#websAnswForm").show().trigger('reset').find("input").prop("disabled", false);
 		$("#websNum").text(i + 1);
 		$("#websNumAll").text(websList.length);
 		$("#websUrl").attr("href", website.url).text(website.url);
-		$("#websUrl").one("click", function(ev) {
-			ap.port.emit("startTask", {
-				hostname : website.hostname
-			});
+		// simply notify the server about the website in questions <-- since we remix them on the client side.
+		ap.port.emit("startTask", {
+			hostname : website.hostname
 		});
-		// if(i){
-			// // all but first
-			// $("#subtleMessageBox").slideDown(600).find("#pastWebsName").text(websList[i-1].hostname);
-		// }
+		// $("#websUrl").one("click", function(ev) {
+			// ap.port.emit("startTask", {
+				// hostname : website.hostname
+			// });
+		// });
 		return i;
 	}
 })();
