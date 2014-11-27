@@ -16,22 +16,87 @@
 						<form action="#" role="form" class="form" id="websAnswForm">
 							<input type="hidden" name="hostname" value="_default" />
 							<h1> Website <span id="websNum">_default</span> out of <span id="websNumAll">_default</span></h1>
-							<p>
+							<!-- I'll hardcode the tasks for now TODO change it later  -->
+							<!-- <p>
 								<big id="taskDescr"> Task description goes here. </big>
-							</p>
-							<hr/>
+							</p> -->
 							<p>
 								<big> <a target="_blank" id="websUrl"></a> </big>
 							</p>
-							<div class="form-group">
-								<p>
-									<big> Your answer: </big>
-								</p>
-								<input class="form-control" type="text" name="taskAnswer" value="" required/>
-								<div class="checkbox-inline">
-									<label>
-										<input type="checkbox" name="cantAnswer" value="false" />
-										I don't have or can't find an answer. </label>
+							<hr/>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<p>
+										<big> I suppose the size of this company is about: </big>
+									</p>									
+								</div>
+								<div class="col-md-6">
+						      <div class="radio">
+						        <label><input autocomplete="off" type="radio" required name="firmSize" value="s1" />1-10 people</label><br />
+						      </div>
+						      <div class="radio">
+						        <label><input autocomplete="off" type="radio" required name="firmSize" value="s2" />10-50 people</label>
+						      </div>
+						      <div class="radio">
+						        <label><input autocomplete="off" type="radio" required name="firmSize" value="s3" />50-100 people</label>
+						      </div>
+						      <div class="radio">
+						        <label><input autocomplete="off" type="radio" required name="firmSize" value="s4" />100-500 people</label>
+						      </div>
+						      <div class="radio">
+						        <label><input autocomplete="off" type="radio" required name="firmSize" value="s5" />>500 people</label>
+						      </div>
+									<div class="checkbox-inline">
+										<label>
+											<input type="checkbox" name="cantAnswer1" class="cant-answer-check" value="false" />
+											I don't have an answer. </label>
+									</div>									
+								</div>
+							</div>
+							<hr/>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<p>
+										<big> For an internship at this company, I would prefer to contact this person: </big>
+									</p>									
+								</div>
+								<div class="col-md-6">
+									<input class="form-control" type="text" name="contactName" placeholder="name surname" value="" required/>
+									<div class="checkbox-inline">
+										<label>
+											<input type="checkbox" name="cantAnswer2" class="cant-answer-check" value="false" />
+											I don't have an answer. </label>
+									</div>
+								</div>
+							</div>
+							<hr/>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<p>
+										<big id="taskDescr"> I suppose the number of open positions at this company is about: </big>
+									</p>
+								</div>
+								<div class="col-md-6">
+						      <div class="radio">
+						        <label><input type="radio" required name="openPositions" value="n1" />None</label><br />
+						      </div>
+						      <div class="radio">
+						        <label><input type="radio" required name="openPositions" value="n2" />1-5</label>
+						      </div>
+						      <div class="radio">
+						        <label><input type="radio" required name="openPositions" value="n3" />5-10</label>
+						      </div>
+						      <div class="radio">
+						        <label><input type="radio" required name="openPositions" value="n4" />10-50</label>
+						      </div>
+						      <div class="radio">
+						        <label><input type="radio" required name="openPositions" value="n5" />>50</label>
+						      </div>
+									<div class="checkbox-inline">
+										<label>
+											<input type="checkbox" class="cant-answer-check" name="cantAnswer3" value="false" />
+											I don't have an answer. </label>
+									</div>
 								</div>
 							</div>
 							<hr />
@@ -59,43 +124,43 @@
 											<p>
 												<b>1</b>
 											</p>
-											<input type="radio" name="_defaultRatingName" value="1" required/>
+											<input autocomplete="off" type="radio" name="_defaultRatingName" value="1" required/>
 										</label>
 										<label class="radio-inline control-label apUXRadio">
 											<p>
 												<b>2</b>
 											</p>
-											<input type="radio" name="_defaultRatingName" value="2" required/>
+											<input autocomplete="off" type="radio" name="_defaultRatingName" value="2" required/>
 										</label>
 										<label class="radio-inline control-label apUXRadio">
 											<p>
 												<b>3</b>
 											</p>
-											<input type="radio" name="_defaultRatingName" value="3" required/>
+											<input autocomplete="off" type="radio" name="_defaultRatingName" value="3" required/>
 										</label>
 										<label class="radio-inline control-label apUXRadio">
 											<p>
 												<b>4</b>
 											</p>
-											<input type="radio" name="_defaultRatingName" value="4" required/>
+											<input autocomplete="off" type="radio" name="_defaultRatingName" value="4" required/>
 										</label>
 										<label class="radio-inline control-label apUXRadio">
 											<p>
 												<b>5</b>
 											</p>
-											<input type="radio" name="_defaultRatingName" value="5" required/>
+											<input autocomplete="off" type="radio" name="_defaultRatingName" value="5" required/>
 										</label>
 										<label class="radio-inline control-label apUXRadio">
 											<p>
 												<b>6</b>
 											</p>
-											<input type="radio" name="_defaultRatingName" value="6" required/>
+											<input autocomplete="off" type="radio" name="_defaultRatingName" value="6" required/>
 										</label>
 										<label class="radio-inline control-label apUXRadio">
 											<p>
 												<b>7</b>
 											</p>
-											<input type="radio" name="_defaultRatingName" value="7" required/>
+											<input autocomplete="off" type="radio" name="_defaultRatingName" value="7" required/>
 										</label>
 										</div>
 										<div align="left" class="col-md-2 semanticLabel">

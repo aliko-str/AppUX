@@ -1,3 +1,5 @@
+// TODO redo 'taskAnswer' and 'cantAnswer'
+
 (function() {
 	"use strict";
 	var ap = window.AppUX;
@@ -51,40 +53,46 @@
 		}
 	})(questionList);
 
+	function onSubmitTaskAnswers(ev) {
+		ev.preventDefault();
+		var hostname = $(this).find("input[name='hostname']").val();
+		ap.port.emit("endTask", {
+			hostname : hostname
+		});
+		// TODO do the testing
+		ap.port.emit("data.task.answer", {
+			webRoot : hostname,
+			task1 : $(this).find("input[name='firmSize']:checked").val() || "",
+			noAnsw1 : $(this).find("input[name='cantAnswer1']").is(":checked"),
+			task2 : $(this).find("input[name='contactName']").val(),
+			noAnsw2 : $(this).find("input[name='cantAnswer2']").is(":checked"),
+			task3 : $(this).find("input[name='openPositions']:checked").val() || "",
+			noAnsw3 : $(this).find("input[name='cantAnswer3']").is(":checked")
+		});
+		submitWithDelay(this, function() {
+			showRatingForm();
+		});
+		return;
+	}
+	
+	function attachCantAnswerHandlers(jqForm){
+		jqForm.find(".cant-answer-check").click(function(ev){
+			if(this.checked){
+				$(this).closest(".form-group").find("input").not(".cant-answer-check").prop("disabled", true);
+			}else{
+				$(this).closest(".form-group").find("input").not(".cant-answer-check").prop("disabled", false);
+			}
+		});
+	}
+
 	(function main(websList) {
 		var jqAnswForm = $("#websAnswForm");
 		var jqRatingForm = $("#websRatingForm");
 		var websIndex = resetWebsite(websList, -1);
-		jqAnswForm.find("#taskDescr").text(ap.options.task.text);
-		jqAnswForm.find("input[name='cantAnswer']").click(function(ev){
-			if(this.checked){
-				jqAnswForm.find("input[name='taskAnswer']").prop("disabled", true);
-			}else{
-				jqAnswForm.find("input[name='taskAnswer']").prop("disabled", false);
-			}
-		});
-		jqAnswForm.submit(function(ev) {
-			ev.preventDefault();
-			var hostname = $(this).find("input[name='hostname']").val();
-			ap.port.emit("endTask", {
-				hostname : hostname
-			});
-			ap.port.emit("data.task.answer", {
-				webRoot : hostname,
-				answer : $(this).find("input[name='taskAnswer']").val(),
-				cantAnswer : $(this).find("input[name='cantAnswer']").is(":checked")
-			});
-			var jqThisSubmit = $(this).find("input[type='submit']");
-			window.setTimeout((function(submText) {
-				return function() {
-					showRatingForm();
-					jqThisSubmit.val(submText);
-				};
-			})(jqThisSubmit.val()), 500);
-			jqThisSubmit.val("Saving it...");
-			return;
-		});
-		jqRatingForm.submit(function(ev){
+		//jqAnswForm.find("#taskDescr").text(ap.options.task.text);
+		attachCantAnswerHandlers(jqAnswForm);
+		jqAnswForm.submit(onSubmitTaskAnswers);
+		jqRatingForm.submit(function(ev) {
 			ev.preventDefault();
 			var dataRaw = $(this).serializeArray();
 			var data = {};
@@ -117,20 +125,22 @@
 			return ap.port.emit("next", "let's roll!");
 		}
 		$("input[name='hostname']").val(website.hostname);
-		$("#websRatingForm").hide().trigger('reset');
-		$("#websAnswForm").show().trigger('reset').find("input").prop("disabled", false);
+		$("#websRatingForm").hide().trigger("reset");
+		$("#websAnswForm").show().trigger("reset").find("input").prop("disabled", false);
 		$("#websNum").text(i + 1);
 		$("#websNumAll").text(websList.length);
 		$("#websUrl").attr("href", website.url).text(website.url);
-		// simply notify the server about the website in questions <-- since we remix them on the client side.
+		// simply notify the server about the website in questions <-- since we remix
+		// them on the client side.
 		ap.port.emit("startTask", {
 			hostname : website.hostname
 		});
 		// $("#websUrl").one("click", function(ev) {
-			// ap.port.emit("startTask", {
-				// hostname : website.hostname
-			// });
+		// ap.port.emit("startTask", {
+		// hostname : website.hostname
+		// });
 		// });
 		return i;
 	}
+
 })();

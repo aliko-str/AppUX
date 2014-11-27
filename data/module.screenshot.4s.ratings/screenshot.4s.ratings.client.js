@@ -65,7 +65,7 @@
 			_saveTime();
 			_noTimeTaking();
 			var jqForm = $(this);
-			jqForm.find("input[type='button']").val("Saving it...").prop("disabled", true);
+			jqForm.find("input[type='submit']").val("Saving it...").prop("disabled", true);
 			var data = {
 				fname : jqForm.find("input[name='fname']").val(),
 				timeTop : timeIntervalsTop.reduce(function(a, b) {

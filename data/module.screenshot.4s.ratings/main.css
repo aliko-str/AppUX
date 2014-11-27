@@ -1,6 +1,7 @@
 html, body {
 	height: 100%;
-	width: 100%;
+	/*width: 100%;*/
+	width: 1665px;
 	font-size: 120%;
 }
 
@@ -52,7 +53,7 @@ html, body {
 	) repeat;
 	padding-bottom: 110px;
 	width:100%;
-	position: absolute;
+	/*position: absolute;*/
 }
 
 input[type='submit'] {
