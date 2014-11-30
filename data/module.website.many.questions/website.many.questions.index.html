@@ -15,13 +15,13 @@
 					<div align="left">
 						<form action="#" role="form" class="form" id="websAnswForm">
 							<input type="hidden" name="hostname" value="_default" />
-							<h1> Website <span id="websNum">_default</span> out of <span id="websNumAll">_default</span></h1>
+							<h1> Company <span id="websNum">_default</span> out of <span id="websNumAll">_default</span></h1>
 							<!-- I'll hardcode the tasks for now TODO change it later  -->
 							<!-- <p>
 								<big id="taskDescr"> Task description goes here. </big>
 							</p> -->
-							<p>
-								<big> <a target="_blank" id="websUrl"></a> </big>
+							<p class="h3">
+								<a target="_blank" id="websUrl"></a>
 							</p>
 							<hr/>
 							<div class="form-group row">
@@ -61,7 +61,7 @@
 									</p>									
 								</div>
 								<div class="col-md-6">
-									<input class="form-control" type="text" name="contactName" placeholder="name surname" value="" required/>
+									<input class="form-control" type="text" name="contactName" maxlength="128" placeholder="name surname" value="" required/>
 									<div class="checkbox-inline">
 										<label>
 											<input type="checkbox" name="cantAnswer2" class="cant-answer-check" value="false" />

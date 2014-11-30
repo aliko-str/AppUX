@@ -7,7 +7,7 @@
 			<div class="s">\
 				<div>\
 					<div class="f kv _SWb" style="white-space:nowrap">\
-						<cite class="_Rm bc"><a href="<%href%>" ><%baseUrl%></a> › <a href="<%href%>" >Homepage</a></cite>\
+						<cite class="_Rm bc"><a href="<%href%>" ><%webRoot%></a> › <a href="<%href%>" >Homepage</a></cite>\
 					</div>\
 					<span class="st"><%snippet%></span>\
 				</div>\
