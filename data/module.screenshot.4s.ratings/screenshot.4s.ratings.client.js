@@ -2,6 +2,7 @@
 	"use strict";
 	var ap = window.AppUX;
 	var imgToLoad = {
+		"fixationCrossImg": ap.folder + "2.png" 
 	};
 	var screenshotsToRate = ap.options.screenshotsToRate;
 	if(ap.options.debug) {
@@ -66,6 +67,8 @@
 			_noTimeTaking();
 			var jqForm = $(this);
 			jqForm.find("input[type='submit']").val("Saving it...").prop("disabled", true);
+			$("#apUXScreenshotRoot").hide();
+			$("#fixationCrossBox").addClass("displayFlex").parent().addClass('full-height');
 			var data = {
 				fname : jqForm.find("input[name='fname']").val(),
 				timeTop : timeIntervalsTop.reduce(function(a, b) {
@@ -84,27 +87,10 @@
 					saveScreenshotRatingsTimeToRate(dataArr);
 				}
 				return;
-			}, 500);
+			}, 1000);
 			ev.preventDefault();
 		});
-		// $("input[type='radio']").click(function(ev) {
-		// timestampTo = Date.now();
-		// });
 	})(screenshotsToRate.shuffle());
-
-	// function sumUpTimeslotArr(timeArr, timestampFrom) {
-		// if(timeArr.length) {
-			// if(timeArr.length > 1) {
-				// return timeArr.reduce(function(a, b) {
-					// return a + b;
-				// });
-			// } else {
-				// return Date.now() - timestampFrom + timeArr[0];
-			// }
-		// } else {
-			// return Date.now() - timestampFrom;
-		// }
-	// }
 
 	function saveScreenshotRatingsTimeToRate(dataArr) {
 		ap.port.emit("data", dataArr);
@@ -167,6 +153,8 @@
 		var tmpIm = new Image();
 		tmpIm.onload = function() {
 			$("#apUXScreenshotRoot").height(tmpIm.height);
+			$("#fixationCrossBox").removeClass("displayFlex").parent().removeClass('full-height');
+			$("#apUXScreenshotRoot").show();
 			onScreenshotLoad();
 		};
 		tmpIm.src = screenshot.url;

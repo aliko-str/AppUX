@@ -1,3 +1,6 @@
--1) Implement a fixation cross for 4s part - to cancel out the effect of preceeding screenshot (otherwise, the contrast between two is too evident).
+-1) Add an icon - so it can be easily visually distinguished
 0) Archieve retrieval functionality for atw-lab.com
 1) Text analysis of google titles and snippets -- and their relation to website success.
+2) Still need to track how long it takes to load pages
+2.1) Extend the pre-loading feature -- preload all webpages?..
+3) Disable radio buttons - 4s exp. - while sending the answer

@@ -1,4 +1,8 @@
 (function() {
+	// prevent from caching entire pages
+	if(!window.onunload){
+		window.onunload = function(){};
+	}
 	var _getHostName = (function(elA) {
 		return function(href) {
 			elA.href = href;

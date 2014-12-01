@@ -14,7 +14,7 @@
 
 	(function setUpTexts(website, task) {
 		$("#websUrl").attr("href", website.href).text(website.hostname);
-		$("#taskText").text(task.text);
+		$("#taskText").html(task.text);
 		$("form").submit(function(ev) {
 			ev.preventDefault();
 			var textsToSubmit = $(this).find("textarea[name='descriptions']").val().split(";");
