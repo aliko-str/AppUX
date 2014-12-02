@@ -15,5 +15,6 @@
 		</div>\
 	</li>';
 	ap.google.finishBtnTmpl = '<input type="button" class="finish-google-experience" id="finishGoogleExperience" value="I\'M DONE RE-ARRANGING" />';
+	ap.google.dragHereText = '<div align="center" id="dragTheseItemsBox"><p class="h1">The items to reorder</p><div><img height="30px" src="<%moduleFolder%>darrow.png" id="dragTheseItemsArrowImg"/></div></div>';
 	ap.google.websites = ap.options.websites;
 })();

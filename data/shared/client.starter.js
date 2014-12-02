@@ -1,7 +1,7 @@
-// 1 - listen for an 'init' event and get baseUrl, folder, main.js
-// 1.5 -- save the these vars
-// 2 - load main.js
-// give main.js the reference to listen to communications
+if(!window.onunload){
+	// prevent caching entire pages
+	window.onunload = function(){};
+}
 if(window.AppUX){
 	if(self.options.debug){
 		self.port.emit("error", {errCode: "#cwu8d", message: "window.AppUX already exists"});

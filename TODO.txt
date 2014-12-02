@@ -4,3 +4,7 @@
 2) Still need to track how long it takes to load pages
 2.1) Extend the pre-loading feature -- preload all webpages?..
 3) Disable radio buttons - 4s exp. - while sending the answer
+4) Storage saving -- a button for opening all data in one giant file in a local tab
+5) GoogleExperience - make shaded areas bigger
+6) settings to maximize window -- add it to instructions
+7) close all tabs before packing the addon - no autorestore of tabs

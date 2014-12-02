@@ -46,7 +46,7 @@
 		// insert texts/content into each ratingArea
 		for(var i = 0, ilen = questionList.length; i < ilen; i++) {
 			var jqRow = jqAllQuestionsArr[i];
-			jqRow.find(".questionBox").text(questionList[i].question);
+			jqRow.find(".questionBox").html(questionList[i].question);
 			jqRow.find("input[type='radio']").attr("name", questionList[i].id);
 			jqRow.find(".apUXWebsMinLabel").text(questionList[i].apUXWebsMinLabel);
 			jqRow.find(".apUXWebsMaxLabel").text(questionList[i].apUXWebsMaxLabel);

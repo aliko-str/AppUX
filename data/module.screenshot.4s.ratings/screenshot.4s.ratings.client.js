@@ -54,7 +54,7 @@
 		}
 
 		dataArr = [];
-		$("#apUXWebsQuestion").text(ap.options.question);
+		$("#apUXWebsQuestion").html(ap.options.question);
 		$("#apUXWebsMinLabel").text(ap.options.apUXWebsMinLabel);
 		$("#apUXWebsMaxLabel").text(ap.options.apUXWebsMaxLabel);
 		setScreenshotToRate(ap, screenList.shift(), _resetTime);

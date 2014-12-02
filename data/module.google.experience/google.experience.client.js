@@ -82,11 +82,20 @@
 		});
 		jqAllLi.parent().first().disableSelection();
 	}
+	
+	function createDragDropNoticeOnTheRight(ap, jqParent, jqInsertBeforeDiv){
+		var jqEl = $(ap.google.dragHereText.interpolate({moduleFolder: ap.baseUrl + ap.folder}));
+		jqEl.width(jqInsertBeforeDiv.width());
+		jqParent.prepend(jqEl);
+		jqEl.css("top", jqInsertBeforeDiv.offset().top - jqEl.height() + "px");
+		return jqEl;
+	}
 
 	function duplicateSnippetsOnTheRight(ap, snippetSlt, rightOverlSlt, finBtnContainerSlt) {
 		var jqRightOverl = $(rightOverlSlt);
 		// duplicate overlay so the content is not transparent
 		var jqRightOverlClone = jqRightOverl.clone();
+		jqRightOverlClone.attr("id", "apUXOverlayRight_Clone");
 		jqRightOverlClone.removeClass("apUX-overlay");
 		jqRightOverlClone.addClass("appUXOverlayOverlay");
 		jqRightOverlClone.offset(jqRightOverl.offset());
@@ -122,7 +131,7 @@
 	}
 
 	function onFinishGoogleExperience(ap, jqSnippRoot, jqFinishBtn) {
-		var _confirm = window.confirm("Press 'Yes' to confirm this is not an accidental click and you've indeed finished. Press 'Cancel' to go back to rearranging.'");
+		var _confirm = window.confirm("Press 'Ok' to confirm that you've indeed finished. Press 'Cancel' to go back to rearranging.'");
 		var websList;
 		if(_confirm) {
 			websList = sendDataListToAddon(ap, "data.rearrWebs", jqSnippRoot);
@@ -148,13 +157,12 @@
 		return initList;
 	}
 
-	// run that shit //
 	_defaultInit(ap, imgToLoad, cssToLoad);
 	renderGoogleSnippets(ap, "#rso div.srg");
 	window.setTimeout(function() {
 		positionOverlays();
 		var jqSnippetContainer = duplicateSnippetsOnTheRight(ap, "#res", "#apUXOverlayRight", "#extrares");
+		createDragDropNoticeOnTheRight(ap, $("#apUXOverlayRight_Clone"), $("#apUXOverlayRight_Clone").find("#res"));
 	}, 100);
 	//positionOverlays();
-	// END run that shit //
 })();
