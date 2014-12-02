@@ -1,0 +1,17 @@
+.apUXRadio {
+	margin-left: 3px !important;
+	margin-right: 3px !important;
+}
+
+.apUXRadio p{
+	margin: 0;
+}
+
+.apUXRadio input {
+	margin: 0 !important;
+	float:none;
+}
+
+.apUXRadio input:hover{
+	cursor: pointer;
+}

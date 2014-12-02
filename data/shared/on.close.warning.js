@@ -4,10 +4,17 @@ window.onbeforeunload = function(e) {
 	return mess;
 };
 
-function onUnloadListener(ev){
-	self.port.emit("test.flow.interrupted");
-	return;
-}
+var onUnloadListener = (function(self) {
+	return function() {
+		self.port.emit("test.flow.interrupted");
+		console.log("UNLOADING");
+		// TODO the event doesn't work -- implement a way around it
+		return;
+	};
+})(self);
+
+window.onunload = function() {
+};
 
 window.addEventListener("unload", onUnloadListener);
 

@@ -1,7 +1,3 @@
-if(!window.onunload){
-	// prevent caching entire pages
-	window.onunload = function(){};
-}
 if(window.AppUX){
 	if(self.options.debug){
 		self.port.emit("error", {errCode: "#cwu8d", message: "window.AppUX already exists"});

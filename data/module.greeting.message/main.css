@@ -4,6 +4,12 @@ html, body {
 	font-size: 100% !important;
 }
 
-#rootEl p, li{
-	/*font-size: 16px;*/
+.vertical-center {
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+
+.full-width{
+	width: 100%;
 }
