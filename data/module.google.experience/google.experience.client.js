@@ -60,7 +60,8 @@
 			jqLi.css("top", liTopCoordStore[i] + "px");
 			//jqLi.css("top", jqLi.data(dataKeyStrTop) + "px");
 			var jqOverlay = $("<div class='AppUXDraggableDiv'></div>");
-			jqOverlay.height(jqRoot.find("div.rc").height());
+			//jqOverlay.height(jqRoot.find("div.rc").height());
+			jqOverlay.height(jqRoot.find("div.rc")[i].clientHeight);
 			jqLi.append(jqOverlay);
 		});
 		jqAllLi.parent().first().sortable({
