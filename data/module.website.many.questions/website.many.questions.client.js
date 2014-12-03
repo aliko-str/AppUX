@@ -64,7 +64,7 @@
 			webRoot : hostname,
 			task1 : $(this).find("input[name='firmSize']:checked").val() || "",
 			noAnsw1 : $(this).find("input[name='cantAnswer1']").is(":checked"),
-			task2 : $(this).find("input[name='contactName']").val(),
+			task2 : $(this).find("input[name='londonOfficeAddress']").val(),
 			noAnsw2 : $(this).find("input[name='cantAnswer2']").is(":checked"),
 			task3 : $(this).find("input[name='openPositions']:checked").val() || "",
 			noAnsw3 : $(this).find("input[name='cantAnswer3']").is(":checked")
