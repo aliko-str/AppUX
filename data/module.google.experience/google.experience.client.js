@@ -131,7 +131,7 @@
 	}
 
 	function onFinishGoogleExperience(ap, jqSnippRoot, jqFinishBtn) {
-		var _confirm = window.confirm("Press 'Ok' to confirm that you've indeed finished. Press 'Cancel' to go back to rearranging.'");
+		var _confirm = window.confirm("Press 'Ok' to confirm that you have indeed finished. Press 'Cancel' to go back.'");
 		var websList;
 		if(_confirm) {
 			websList = sendDataListToAddon(ap, "data.rearrWebs", jqSnippRoot);

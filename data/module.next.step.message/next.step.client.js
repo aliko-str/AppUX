@@ -15,6 +15,10 @@
 		ap.port.emit("next", "let's roll!");
 	};
 	ap.port.on("nextStepText", function(nextStepText){
-		window.document.getElementById("nextStepText").textContent = nextStepText;
+		window.document.getElementById("nextStepText").innerHTML = nextStepText;
+		//$("#nextStepText").html(nextStepText);
+	});
+	ap.port.on("nextStepTitle", function(nextStepText){
+		window.document.getElementById("nextStepTitle").textContent = nextStepText;
 	});
 })();

@@ -11,3 +11,7 @@ html, body {
 .full-width{
 	width: 100%;
 }
+
+#nextStepText {
+	font-size: 20px;
+}
