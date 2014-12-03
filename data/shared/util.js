@@ -134,7 +134,7 @@ function disableSubmitForNSec(jqSubmit, sec, btnText, clickCallback, unfreezeCal
 	var strVal = btnText || "Submit is delayed ";
 	var oldStrVal = jqSubmit.val();
 	jqSubmit.val(strVal);
-	jqSubmit.attr("title", "You can't submit answers before the button unfreezes. This is a part of our anti-bot policy.");
+	//jqSubmit.attr("title", "You can't submit answers before the button unfreezes. This is a part of our anti-bot policy.");
 	jqSubmit.attr("style", "box-shadow: none;cursor: not-allowed;opacity: 0.5;");
 	jqSubmit.tooltip();
 	jqSubmit.hover(function(ev) {

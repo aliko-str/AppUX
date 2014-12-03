@@ -1,0 +1,101 @@
+html, body {
+	height: 100%;
+	/*width: 100%;*/
+	width: 1665px;
+	font-size: 120%;
+}
+
+.vertical-center {
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+
+.full-width{
+	width: 100%;
+}
+
+.full-height{
+	height: 100%;
+}
+
+
+#rateControlsContainer {
+	background-color: white;
+	width: 1665px;
+}
+
+/*#rateControlsContainer > * {
+	background-color: white;
+	padding-top: 10px;
+}*/
+
+.radioBtnContainer {
+	min-width: 750px;
+}
+
+#rateeContainer {
+	padding-left: 10px;
+	padding-right: 10px;
+	background: url(
+	data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAD0lEQVQImWNgQAX/yeAAAIHCA/0RE2WAAAAAAElFTkSuQmCC
+	) repeat;
+	width:100%;
+	height: 100%;
+}
+
+input[type='submit'] {
+	height: 50px;
+}
+
+#apUXWebsMinLabel {
+}
+
+#apUXWebsMaxLabel {
+	margin-left: 20px;
+}
+
+.apUXRadio {
+	margin-left: 3px !important;
+	margin-right: 3px !important;
+}
+
+.apUXRadio p{
+	margin: 0;
+}
+
+.apUXRadio input {
+	margin: 0 !important;
+	float:none;
+}
+
+.apUXRadio input:hover{
+	cursor: pointer;
+}
+
+#apUXWebsPreviewRoot {
+	background-color: white;
+}
+
+
+input {
+	box-shadow: none;
+}
+
+#fixationCrossBox {
+	display: flex;
+	align-items: center;
+	background-color:#888888;
+	width: 100%;
+	height: 100%;
+}
+
+/*.displayFlex {
+	display: flex;
+	align-items: center;
+}*/
+
+#fixationCrossBox img{
+	width:425px;
+	height:425px;
+}
