@@ -1,5 +1,3 @@
-//nextStepText
-
 (function() {
 	var ap = window.AppUX;
 	var imgToLoad = {

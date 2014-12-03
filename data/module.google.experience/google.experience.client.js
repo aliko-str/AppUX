@@ -120,11 +120,11 @@
 		jqFinishBtn.css("visibility", "visible");
 		jqFinishBtn.before("<br/>");
 		//jqFinishBtn.click();
-		disableSubmitForNSec(jqFinishBtn, ap.options.minTimeToBrowse, "Time till you can submit:  ", function(ev) {
+		disableSubmitForNSec(jqFinishBtn, ap.options.minTimeToBrowse, "Submit is temporarily disabled.", function(ev) {
 			onFinishGoogleExperience(ap, jqSnippListCopy, jqFinishBtn);
 		}, function() {
 			// no-op
-		});
+		}, true);
 		// and make the snippets draggable
 		makeSnippetsDraggable(jqSnippListCopy);
 		return jqRightOverlClone;

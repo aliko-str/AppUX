@@ -116,8 +116,9 @@ function submitWithDelay(rootEl, callback) {
 	return;
 }
 
-function disableSubmitForNSec(jqSubmit, sec, btnText, clickCallback, unfreezeCallback) {
+function disableSubmitForNSec(jqSubmit, sec, btnText, clickCallback, unfreezeCallback, ifNoCounting) {
 	var delaySec = sec || 5;
+	var _secondsLeft = delaySec;
 	var secondsToString = (function(delaySec) {
 		if(delaySec > 60) {
 			return function(sec) {
@@ -130,10 +131,10 @@ function disableSubmitForNSec(jqSubmit, sec, btnText, clickCallback, unfreezeCal
 			return sec + " sec";
 		};
 	})(delaySec);
-	var strVal = btnText || "Unfreezes in ";
+	var strVal = btnText || "Submit is delayed ";
 	var oldStrVal = jqSubmit.val();
-	//jqSubmit.attr("title", "You can't submit answers before the button unfreezes.
-	// This is a part of our anti-bot policy.");
+	jqSubmit.val(strVal);
+	jqSubmit.attr("title", "You can't submit answers before the button unfreezes. This is a part of our anti-bot policy.");
 	jqSubmit.attr("style", "box-shadow: none;cursor: not-allowed;opacity: 0.5;");
 	jqSubmit.tooltip();
 	jqSubmit.hover(function(ev) {
@@ -142,11 +143,16 @@ function disableSubmitForNSec(jqSubmit, sec, btnText, clickCallback, unfreezeCal
 		ev.preventDefault();
 	});
 	jqSubmit.click(function(ev) {
+		var alertMsg = "Please spend a little more time doing the current activity. (At least " + secondsToString(_secondsLeft) + " more)";
+		window.alert(alertMsg);
 		ev.preventDefault();
 	});
 	function tick(secondLeft) {
+		_secondsLeft = secondLeft;
 		if(secondLeft) {
-			jqSubmit.val(strVal + secondsToString(secondLeft));
+			if(!ifNoCounting){
+				jqSubmit.val(strVal + secondsToString(secondLeft));
+			}
 			window.setTimeout(function() {
 				tick(secondLeft - 1);
 			}, 1000);
