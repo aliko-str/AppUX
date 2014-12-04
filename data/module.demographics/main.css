@@ -6,3 +6,7 @@ html, body: {
 #rootEl p, label {
 	font-size: 16px;
 }
+
+.multiItemScale {
+	padding-top: 5px;
+}

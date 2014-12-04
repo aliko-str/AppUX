@@ -135,11 +135,6 @@
 		ap.port.emit("startTask", {
 			hostname : website.hostname
 		});
-		// $("#websUrl").one("click", function(ev) {
-		// ap.port.emit("startTask", {
-		// hostname : website.hostname
-		// });
-		// });
 		return i;
 	}
 

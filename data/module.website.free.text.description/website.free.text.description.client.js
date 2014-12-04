@@ -18,11 +18,10 @@
 		$("form").submit(function(ev) {
 			ev.preventDefault();
 			var textsToSubmit = $(this).find("textarea[name='descriptions']").val().split(";");
+			var data = {};
+			data[website.hostname] = textsToSubmit;
 			submitWithDelay(this, function(){
-				ap.port.emit("data", {
-					hostname: website.hostname,
-					descriptors: textsToSubmit
-				});
+				ap.port.emit("data", data);
 				ap.port.emit("next", "Let's roll!!");
 				return;
 			});

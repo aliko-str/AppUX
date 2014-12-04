@@ -36,7 +36,7 @@
 				resEl += wrapperDiv1 + radioElStr + wrapperDiv2;
 			}
 			if(minMaxLabels && minMaxLabels.length > 1){
-				resEl = "<span><big><b>" + minMaxLabels[0] + "</b></big></span>" + resEl +"<span><big><b>&nbsp;&nbsp;" + minMaxLabels[1] + "</b></big></span>";
+				resEl = "<span class='vertTop'><big><b>" + minMaxLabels[0] + "</b></big></span>" + resEl +"<span class='vertTop'><big><b>&nbsp;&nbsp;" + minMaxLabels[1] + "</b></big></span>";
 			}
 			return resEl;
 		}

@@ -16,21 +16,11 @@
 					<br />
 					<hr />
 					<p class="bg-info">
-						<big>Note:</big>&nbsp;Your data will be treated confidentially and with the utmost care and respect. No personal data will be disclosed to any third parties.
+						<big>Note:</big>&nbsp;Your data will be treated anonymously and with the utmost care and respect. No personal data will be disclosed to any third parties.
 					</p>
 				</div>
 			</div>
 			<form id="demographicsForm" role="form" class="form-horizontal" action="#">
-				<div class="demographicsdiv form-group">
-					<div align="right" class="col-md-3 control-label col-md-offset-2">
-						<p>
-							English profeciency:
-						</p>
-					</div>
-					<div align="left" class="col-md-5" id="englishProficiency">
-					</div>
-				</div>
-				
 				<div class="demographicsdiv form-group">
 					<div align="right" class="col-md-3 col-md-offset-2 control-label">
 						<p>
@@ -115,7 +105,16 @@
 						<select class="form-control" id="ethnicBackground" name="ethnicBackground" required></select>
 					</div>
 				</div>
-
+				
+				<div class="demographicsdiv form-group">
+					<div align="right" class="col-md-3 control-label col-md-offset-2">
+						<p>
+							English profeciency:
+						</p>
+					</div>
+					<div align="left" class="col-md-5 multiItemScale" id="englishProficiency">
+					</div>
+				</div>
 				<!-- <div class="demographicsdiv form-group">
 					<div align="right" class="col-md-3 control-label col-md-offset-2">
 						<p>
@@ -153,7 +152,7 @@
 							Hours per week spent on the Internet (not including time spent working with email):
 						</p>
 					</div>
-					<div align="left" class="col-md-5 " id="webuse">
+					<div align="left" class="col-md-5 multiItemScale" id="webuse">
 						<!-- <div class="radio-inline" id="webuse"></div> -->
 					</div>
 				</div>
@@ -164,7 +163,7 @@
 							Experience in visual design or user interface design:
 						</p>
 					</div>
-					<div align="left" class="col-md-5" id="designExperience">
+					<div align="left" class="col-md-5 multiItemScale" id="designExperience">
 					</div>
 				</div>
 
