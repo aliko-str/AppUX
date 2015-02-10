@@ -1,8 +1,12 @@
 0) Archieve retrieval functionality for atw-lab.com
 1) Text analysis of google titles and snippets -- and their relation to website success.
+
 2) Still need to track how long it takes to load pages
 2.1) Extend the pre-loading feature -- preload all webpages?..
 3) Disable radio buttons - 4s exp. - while sending the answer
 4) Storage saving -- a button for opening all data in one giant file in a local tab
 6) settings to maximize window -- add it to instructions
 7) close all tabs before packing the addon - no autorestore of tabs
+
+8) string results are saved as character arrays -- make them strings again
+9) fix the mess with setCssViewport
